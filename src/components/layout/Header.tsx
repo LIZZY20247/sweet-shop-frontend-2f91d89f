@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -28,7 +29,9 @@ export function Header() {
                 <SheetTitle>Menu</SheetTitle>
               </SheetHeader>
               <nav className="flex flex-col space-y-4 mt-6">
-                <Button variant="ghost" className="justify-start">Home</Button>
+                <Button variant="ghost" className="justify-start" asChild>
+                  <Link to="/">Home</Link>
+                </Button>
                 <Button variant="ghost" className="justify-start">Products</Button>
                 <Button variant="ghost" className="justify-start">Categories</Button>
                 <Button variant="ghost" className="justify-start">About</Button>
@@ -37,12 +40,16 @@ export function Header() {
             </SheetContent>
           </Sheet>
           
-          <h1 className="text-xl font-bold text-primary">EliteStore</h1>
+          <Link to="/">
+            <h1 className="text-xl font-bold text-primary">EliteStore</h1>
+          </Link>
         </div>
 
         {/* Navigation - Hidden on mobile */}
         <nav className="hidden md:flex items-center space-x-6">
-          <Button variant="ghost">Home</Button>
+          <Button variant="ghost" asChild>
+            <Link to="/">Home</Link>
+          </Button>
           <Button variant="ghost">Products</Button>
           <Button variant="ghost">Categories</Button>
           <Button variant="ghost">About</Button>
@@ -70,8 +77,10 @@ export function Header() {
             <Heart className="h-5 w-5" />
           </Button>
           
-          <Button variant="ghost" size="icon">
-            <User className="h-5 w-5" />
+          <Button variant="ghost" size="icon" asChild>
+            <Link to="/signin">
+              <User className="h-5 w-5" />
+            </Link>
           </Button>
           
           <Sheet open={isCartOpen} onOpenChange={setIsCartOpen}>
